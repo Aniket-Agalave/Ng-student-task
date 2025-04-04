@@ -1,0 +1,51 @@
+<h1>Student Registration Form</h1>
+
+<!-- Registration Form -->
+<form>
+  <label for="name">Name:</label>
+  <input
+    type="text"
+    id="name"
+    [(ngModel)]="student.name"
+    name="name"
+    required
+  />
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" [(ngModel)]="student.age" name="age" required />
+
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    id="email"
+    [(ngModel)]="student.email"
+    name="email"
+    required
+  />
+
+  <label for="course">Course:</label>
+  <input
+    type="text"
+    id="course"
+    [(ngModel)]="student.course"
+    name="course"
+    required
+  />
+
+  <!-- Buttons -->
+  <button type="button" (click)="register()">Submit</button>
+  <button type="button" (click)="resetForm()">Reset</button>
+</form>
+
+<!-- Display Student List -->
+<div *ngIf="students.length > 0">
+  <h2>Registered Students:</h2>
+  <ul>
+    <li *ngFor="let s of students; let i = index">
+      <strong>Name:</strong> {{ s.name }} | <strong>Age:</strong> {{ s.age }} |
+      <strong>Email:</strong> {{ s.email }} | <strong>Course:</strong>
+      {{ s.course }}
+      <button (click)="deleteStudent(i)">Delete</button>
+    </li>
+  </ul>
+</div>
